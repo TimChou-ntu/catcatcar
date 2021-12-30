@@ -1,7 +1,9 @@
 from django.shortcuts import render
+from django.views.generic.base import View
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import permissions
+
 
 from queue import Queue
 
@@ -19,7 +21,9 @@ class EchoView(APIView):
     def __init__(self):
         print(Post.objects.all())
             
-        return    
+        return 
+
+       
     def get(self, request):
         print(Post.objects.all().empty())
         
@@ -29,4 +33,20 @@ class EchoView(APIView):
         return Response(data={ 'echo': '周子庭好帥' }, status=200)
         
         return Response(data={ 'echo': 'queue' }, status=200)
+
+
+### Render
+
+class CarView(APIView):
+    permission_classes = (permissions.IsAuthenticated,)
+
+
+    def get(self, request):
+        return Response(data={ 'echo': '周子庭好帥' }, status=200)
+def index(request):
+    num_visits = request.session.get('num_visits', 0)
+    request.session['num_visits'] = num_visits + 1
+
+    context={'name': 'timchou', 'num_visits': num_visits}
+    return render(request, 'index.html', context=context)
 
