@@ -43,10 +43,3 @@ class CarView(APIView):
 
     def get(self, request):
         return Response(data={ 'echo': '周子庭好帥' }, status=200)
-def index(request):
-    num_visits = request.session.get('num_visits', 0)
-    request.session['num_visits'] = num_visits + 1
-
-    context={'name': 'timchou', 'num_visits': num_visits}
-    return render(request, 'index.html', context=context)
-
