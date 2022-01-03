@@ -53,8 +53,7 @@ class ClientView(APIView):
             print("status: ",car.status)
             # car.delete()
             
-        response = json.loads(serializers.serialize('json',car_list))
-        
+       
         return Response(data=serializer.data, status=200)
     
     def post(self, request):
