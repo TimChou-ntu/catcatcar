@@ -55,3 +55,5 @@ class Car(Model):
         default='m',
         help_text='Car availability',
     )
+    def __str__(self):
+        return f"car: {self.carID} Type: {self.carType} status: {self.status}"
