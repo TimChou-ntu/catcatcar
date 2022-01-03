@@ -42,3 +42,6 @@ Or you can use `http` to send request
 $ sudo apt-get install httpie
 $ http --json http://localhost:8000/rest/tutorial
 ```
+Login with curl
+$ curl -X POST -H "Content-Type: application/json" -d '{"username":"jinjei","password":123456}' localhost:8000/api/token/ 
+$ curl -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQxMTg5NDE3LCJpYXQiOjE2NDExODkxMTcsImp0aSI6IjRlYzI0NDNiMzkzOTQyYTdiYzQzMTczZGUzMDJlNjRkIiwidXNlcl9pZCI6MX0.0u69wPx_3E6VWR0a08XGuh3C6Sbu3mUZJkXyEZP05UQ" http://www.example.com
