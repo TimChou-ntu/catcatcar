@@ -27,3 +27,31 @@ class Post(Model):
 
     def __str__(self):
         return self.title
+
+
+### User data
+class Record(Model):
+    uID = models.CharField(max_length=20)
+    carID = models.CharField(max_length=20)
+    startTime = models.DateTimeField()
+    duration = models.DurationField()
+
+    def __str__(self):
+        return f"user: {self.uID}\ncarID: {self.carID}\nstartTime: {self.startTime}\nduration: {self.duration}"
+
+class Car(Model):
+    carID = models.CharField(max_length=20)
+    carType = models.CharField(max_length=20)
+    remainTime = models.IntegerField()
+    CAR_STATUS = (
+        ('m', 'mantainance'),
+        ('a', 'available'),
+        ('r', 'reserved')
+    )
+    status = models.CharField(
+        max_length=1,
+        choices=CAR_STATUS,
+        blank=True,
+        default='m',
+        help_text='Car availability',
+    )
