@@ -42,8 +42,7 @@ class Record(Model):
 class Car(Model):
     carID = models.CharField(max_length=20)
     carType = models.CharField(max_length=20)
-    serveTime = models.DateTimeField()
-    lastMantainTime = models.DateTimeField()
+    remainTime = models.IntegerField()
     CAR_STATUS = (
         ('m', 'mantainance'),
         ('a', 'available'),
