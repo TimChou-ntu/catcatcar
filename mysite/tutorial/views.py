@@ -37,7 +37,7 @@ class EchoView(APIView):
 
 ### Render
 
-class CarView(APIView):
+class ClientView(APIView):
     permission_classes = (permissions.IsAuthenticated,)
     # permission_classes = (permissions.AllowAny,)
 
