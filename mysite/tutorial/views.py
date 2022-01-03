@@ -37,11 +37,14 @@ class EchoView(APIView):
 
 ### Render
 
-class ClientView(APIView):
-    permission_classes = (permissions.AllowAny,)
+class CarView(APIView):
+    permission_classes = (permissions.IsAuthenticated,)
+    # permission_classes = (permissions.AllowAny,)
 
+    
 
     def get(self, request):
+        print(request.user)
         return Response(data={ 'echo': '周子庭好帥' }, status=200)
 class CarView(APIView):
     permission_classes = (permissions.AllowAny,)
