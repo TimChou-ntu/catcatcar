@@ -34,6 +34,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'channels',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -48,6 +49,7 @@ INSTALLED_APPS = [
     # # other apps
     # 'django_q',
     'sslserver',
+    
 ]
 
 # # settings.py example
@@ -171,3 +173,5 @@ REST_FRAMEWORK = {
     'EXCEPTION_HANDLER': 'core.exceptions.core_exception_handler',
     # 'NON_FIELD_ERRORS_KEY': 'error',
 }
+
+ASGI_APPLICATION = "mysite.routing.application" 

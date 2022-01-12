@@ -43,7 +43,8 @@ class ClientView(APIView):
 
 
     def get(self, request):
-        
+        fromip = request.META.get("REMOTE_ADDR")
+        print(f"receive req from {fromip}")
         car_list = Car.objects.all()
         serializer = CarSerializer(car_list, many=True)
         print(car_list)
