@@ -5,7 +5,7 @@ class ChatConsumer(WebsocketConsumer):
     def connect(self):
         self.username = self.scope["user"]
         self.accept()
-        self.send(text_data="[Welcome %s!]" % self.username)
+        self.send(text_data=f"[Welcome {self.username}!]")
 
     def disconnect(self, msg):
         pass
