@@ -3,7 +3,8 @@ from django.views.generic.base import View
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import permissions
-
+from channels.layers import get_channel_layer
+from asgiref.sync import async_to_sync
 
 from queue import Queue
 
@@ -25,11 +26,19 @@ class EchoView(APIView):
 
        
     def get(self, request):
-        print(Post.objects.all().empty())
+        # print(Post.objects.all().empty())
         
-        post1 = Post(title='12',content='23')
-        post1.save()
-        
+        # post1 = Post(title='12',content='23')
+        # post1.save()
+        channel_layer = get_channel_layer()
+        async_to_sync(channel_layer.group_send)(
+            'event_sharif',
+            {
+                "type": "chat.message",
+                'message' : "tim"
+            }
+        )
+        print('send')
         return Response(data={ 'echo': '周子庭好帥' }, status=200)
         
         return Response(data={ 'echo': 'queue' }, status=200)

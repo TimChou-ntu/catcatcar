@@ -175,3 +175,20 @@ REST_FRAMEWORK = {
 }
 
 ASGI_APPLICATION = "mysite.routing.application" 
+
+# socket
+# outside ip
+# CHANNEL_LAYERS = {
+#     "default": {
+#         "BACKEND": "channels_redis.core.RedisChannelLayer",
+#         "CONFIG": {
+#             "hosts": [("<ip>", 8000)],
+#         },
+#     },
+# }
+# local
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer"
+    }
+}
