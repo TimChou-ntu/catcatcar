@@ -42,10 +42,13 @@ class Record(Model):
 class Car(Model):
     carID = models.CharField(max_length=20)
     carType = models.CharField(max_length=20)
-    sdp = models.CharField(max_length=2048, default='')
+    carIP = models.CharField(max_length=100, default="")
+    sdp = models.CharField(max_length=2048, default="")
     duration = models.IntegerField(default=0)
+    hash = models.CharField(max_length=2048, default="")
     CAR_STATUS = (
         ('m', 'mantainance'),
+        ('o', 'occupied'),
         ('a', 'available'),
         ('r', 'reserved')
     )
@@ -53,7 +56,7 @@ class Car(Model):
         max_length=1,
         choices=CAR_STATUS,
         blank=True,
-        default='m',
+        default='a',
         help_text='Car availability',
     )
     def __str__(self):
