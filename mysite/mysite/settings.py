@@ -28,12 +28,13 @@ SECRET_KEY = os.environ['SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'channels',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -48,6 +49,7 @@ INSTALLED_APPS = [
     # # other apps
     # 'django_q',
     'sslserver',
+    
 ]
 
 # # settings.py example
@@ -170,4 +172,23 @@ REST_FRAMEWORK = {
     ],
     'EXCEPTION_HANDLER': 'core.exceptions.core_exception_handler',
     # 'NON_FIELD_ERRORS_KEY': 'error',
+}
+
+ASGI_APPLICATION = "mysite.routing.application" 
+
+# socket
+# outside ip
+# CHANNEL_LAYERS = {
+#     "default": {
+#         "BACKEND": "channels_redis.core.RedisChannelLayer",
+#         "CONFIG": {
+#             "hosts": [("<ip>", 8000)],
+#         },
+#     },
+# }
+# local
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer"
+    }
 }

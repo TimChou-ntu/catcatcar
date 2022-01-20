@@ -8,3 +8,4 @@ typing-extensions==3.10.0.
 djangorestframework-simplejwt==5.0.0
 django-sslserver==0.22
 python-dotenv==0.19.2
+channels==3.0.4
