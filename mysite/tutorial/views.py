@@ -16,7 +16,7 @@ from aiortc import RTCSessionDescription
 from .models import Post, Record, Car
 from .serializers import CarSerializer, TokenReturnSerializer
 # Create your views here.
-TOKEN_VALID_TIME = 30000
+TOKEN_VALID_TIME = 30
 time_list = []
 
 
@@ -84,8 +84,8 @@ class EchoView(APIView):
 ### Render
 
 class ClientView(APIView):
-    # permission_classes = (permissions.IsAuthenticated,)
-    permission_classes = (permissions.AllowAny,)
+    permission_classes = (permissions.IsAuthenticated,)
+    # permission_classes = (permissions.AllowAny,)
     t = threading.Thread(target = func)
     t.start()
 
