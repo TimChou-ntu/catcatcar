@@ -1,5 +1,10 @@
 # muimui_backend
-
+## Our system architecture
+![system architecture](https://i.postimg.cc/76Fcc59y/muimui.png)
+## Other codes
+- [muimui-frontend](https://github.com/GinGerBread-Yellow/muimui-frontend/)
+- [muimui_backend](https://github.com/TimChou-ntu/muimui_backend/)
+- [muimui_car](https://github.com/TintinWuNTUEE/muimui_car/)
 
 ## Env
 - python 3.7.1
