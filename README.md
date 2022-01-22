@@ -21,6 +21,7 @@ $ python3 manage.py migrate
 - Create super user
 ```bash
 $ python3 manage.py createsuperuser
+# follow the prompts and create the user
 ```
 - Run the backend server
 ```bash
@@ -30,26 +31,30 @@ $ python3 manage.py runserver 0.0.0.0:8000
 ```bash
 $ python3 manage.py runsslserver
 ```
+- You can access backend by input `http://localhost:8000/hide/` in your browser
+## REST API format
 
+### Auth
+- login
+    - `POST http://localhost:8000/api/token/`
+    - `data: {"username", "password"}`
 
+### view cars (AuthOnly)
+- view all cars
+    - `GET http://localhost:8000/rest/clients/`
+- reserve a car
+    - `POST http://localhost:8000/rest/clients/`
+    - `data={"carID"}`
 
-## Using `curl` to perform client request
-```bash
-$ curl http://localhost:8000/rest/tutorial
-```
-Or you can use `http` to send request
-```bash
-$ sudo apt-get install httpie
-$ http --json http://localhost:8000/rest/tutorial
-```
-Login with curl
-```bash
-$ curl -X POST -H "Content-Type: application/json" -d '{"username":"jinjei","password":123456}' localhost:8000/api/token/ 
-$ curl -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQxMTg5NDE3LCJpYXQiOjE2NDExODkxMTcsImp0aSI6IjRlYzI0NDNiMzkzOTQyYTdiYzQzMTczZGUzMDJlNjRkIiwidXNlcl9pZCI6MX0.0u69wPx_3E6VWR0a08XGuh3C6Sbu3mUZJkXyEZP05UQ" http://www.example.com
-```
-to test websocket 
-```bash
-$ websocat ws://localhost:8000/ws/chat/
-```
+### connect to car
+- get sdp, ip, carID
+    - `GET http://localhost:8000/rest/cars/<YOUR_TOKEN>/`
+- send your sdp answer
+    - `POST http://localhost:8000/rest/cars/`
+    - `data={"carID", "sdp", "carIP"}`
+
+## Websocket connection
+- to construct a websocket connection
+    - `ws:/localhost:8000/ws/chat/`
 
 
